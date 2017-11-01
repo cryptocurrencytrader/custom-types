@@ -1,0 +1,11 @@
+{
+  "name": "custom-types",
+  "version": "1.0.0",
+  "description": "📦 Custom TypeScript definition files for NPM packages",
+  "repository": "git@github.com:cryptocurrencytrader/custom-types.git",
+  "author": "Rafael Tavares <rafael@tavares.email>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.0.25"
+  }
+}

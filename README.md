@@ -1,2 +1,2 @@
 # custom-types
-Custom definition files for our packages 📘
+📦 Custom TypeScript definition files for NPM packages
