@@ -1,4 +1,8 @@
+/// <reference types="react" />
+
 declare module 'react-text-mask' {
+  import * as React from 'react';
+
   namespace TextMask {
     export type SupportedTypes = 'text' | 'tel' | 'url' | 'password' | 'search';
     export type Mask = (string | RegExp)[];
