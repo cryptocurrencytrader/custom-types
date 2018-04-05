@@ -2,10 +2,20 @@
 # yarn lockfile v1
 
 
-"@types/async@^2.0.46":
-  version "2.0.46"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.46.tgz#f13a6c336a6582b95d0c0269e796b709488fd54d"
+"@types/async@^2.0.48":
+  version "2.0.48"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.48.tgz#97436de4c84163b04f678066b3f77b01e58deb7a"
 
-"@types/react@^16.0.25":
-  version "16.0.25"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.25.tgz#bf696b83fe480c5e0eff4335ee39ebc95884a1ed"
+"@types/react@^16.3.5":
+  version "16.3.5"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.5.tgz#bd3b21285602ea7cadb4b9e0d9711d96fd5692cc"
+  dependencies:
+    csstype "^2.0.0"
+
+csstype@^2.0.0, csstype@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.1.1.tgz#37b01a7a9958ef0b88167ff6678deccd732e0ae2"
+
+type-zoo@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/type-zoo/-/type-zoo-1.2.1.tgz#978f2a825fef06f440718fa4671adf917e8b16cb"
