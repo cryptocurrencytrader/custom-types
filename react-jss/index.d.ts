@@ -35,8 +35,8 @@ export interface CSSProperties extends Omit<CSSPropertiesMap, keyof FlattenEnhan
   [key: string]: any;
 }
 
-export interface Styles {
-  [key: string]: CSSProperties;
+export type Styles<K extends string = string> = {
+  [key in K]: CSSProperties;
 }
 
 type ComponentConstructor<P> = React.ComponentClass<P> | React.SFC<P>;
