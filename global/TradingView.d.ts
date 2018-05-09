@@ -29,10 +29,12 @@ declare namespace TradingViewModule {
     interval: string;
     library_path?: string;
     locale: string;
+    logo?: Logo;
     overrides?: { [key: string]: string };
     symbol: string;
     timeframe?: string;
     time_frames?: TimeFrame[];
+    timezone?: string;
     width?: number;
     user_id: string;
   }
@@ -51,5 +53,10 @@ declare namespace TradingViewModule {
     resolution: string;
     description?: string;
     title?: string;
+  }
+
+  interface Logo {
+    image: string;
+    link: string;
   }
 }
