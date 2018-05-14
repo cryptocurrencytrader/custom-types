@@ -1,6 +1,6 @@
 {
   "name": "@bitcointrade/custom-types",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "📦 Custom TypeScript definition files for NPM packages",
   "repository": "git@github.com:cryptocurrencytrader/custom-types.git",
   "author": "Rafael Tavares <rafael@tavares.email>",
