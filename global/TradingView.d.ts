@@ -11,7 +11,8 @@ declare namespace TradingViewModule {
   var widget: Widget;
 
   interface Widget {
-    new (props: WidgetProps);
+    new (props: WidgetProps): Widget;
+    setSymbol(symbol: string, interval: string, callback?: () => void);
   }
 
   interface WidgetProps {
