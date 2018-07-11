@@ -12,6 +12,7 @@ declare namespace TradingViewModule {
 
   interface Widget {
     new (props: WidgetProps): Widget;
+    activeChart(): Chart;
     setSymbol(symbol: string, interval: string, callback?: () => void);
   }
 
@@ -40,13 +41,19 @@ declare namespace TradingViewModule {
     user_id: string;
   }
 
+  interface Chart {
+    symbol(): string;
+    symbolExt(): SymbolDescriptor;
+  }
+
   interface DrawingAccess {
     type: string;
     tools: ToolDescription[];
   }
 
-  interface ToolDescription {
-    name: string;
+  interface Logo {
+    image: string;
+    link: string;
   }
 
   interface TimeFrame {
@@ -56,8 +63,15 @@ declare namespace TradingViewModule {
     title?: string;
   }
 
-  interface Logo {
-    image: string;
-    link: string;
+  interface ToolDescription {
+    name: string;
+  }
+
+  interface SymbolDescriptor {
+    description: string;
+    exchange: string;
+    full_name: string;
+    symbol: string;
+    type: string;
   }
 }
