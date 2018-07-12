@@ -13,6 +13,7 @@ declare namespace TradingViewModule {
   interface Widget {
     new (props: WidgetProps): Widget;
     activeChart(): Chart;
+    onChartReady(callback: () => void): void;
     setSymbol(symbol: string, interval: string, callback?: () => void);
   }
 
