@@ -21,31 +21,37 @@ declare module 'react-jss' {
 
   export function createTheming(namespace: string): Theming;
 
-  type MapType = string | number;
-  type CSSPropertiesMap = CSS.Properties<MapType>;
+  export type PropertiesType = string | number;
+  export type CSSProperties = CSS.Properties<PropertiesType>;
 
-  type CSSRecord<K extends keyof CSSPropertiesMap, T> = Record<K, Pick<CSSPropertiesMap, K>[K]> | Record<K, T>;
+  export type ExtendsCSSProperties<K extends keyof CSSProperties, T> = Record<K, Pick<CSSProperties, K>[K]> | Record<K, T>;
 
-  type EnhancedProperties = (
-    CSSRecord<'animation', Array<any[]>> &
-    CSSRecord<
+  export type EnhancedCSSProperties = Partial<(
+    ExtendsCSSProperties<'animation', Array<any[]>> &
+    ExtendsCSSProperties<
       'backgroundSize' | 'backgroundPosition' | 'border' | 'borderBottom' | 'borderLeft' |
       'borderTop' | 'borderRight' | 'boxShadow' | 'flex' | 'margin' | 'padding' | 'outline' |
       'transformOrigin' | 'transform' | 'transition',
       any[]
     >
+  )>;
+
+  export type JSSProperties = (
+    Pick<CSSProperties, Exclude<keyof CSSProperties, keyof EnhancedCSSProperties>> &
+    EnhancedCSSProperties
   );
 
-  type FlattenEnhancedProperties = {
-    [key in keyof EnhancedProperties]?: EnhancedProperties[key];
+  export type ComponentCSSProperties<P extends object = {}> = {
+    [key in keyof JSSProperties]?: JSSProperties[key] | ((props: P) => JSSProperties[key]);
+  } & {
+    [key: string]: any;
   };
 
-  export interface CSSProperties extends Pick<CSSPropertiesMap, Exclude<keyof CSSPropertiesMap, keyof FlattenEnhancedProperties>>, FlattenEnhancedProperties {
-    [key: string]: any;
-  }
+  export type StaticStyles<K extends string = string, P extends object = {}> = Record<K,
+    ComponentCSSProperties<P> | ((props: P) => ComponentCSSProperties<P>)
+  >;
 
-  export type StaticStyles<K extends string = string> = Record<K, CSSProperties>;
-  export type ThemedStyles<T extends object = {}, K extends string = string> = (theme: T) => StaticStyles<K>;
+  export type ThemedStyles<T extends object = {}, K extends string = string, P extends object = {}> = (theme: T) => StaticStyles<K, P>;
 
   interface ComponentWithStyles<InjectedProps, C extends string> {
     <P extends InjectedProps>(
@@ -58,5 +64,8 @@ declare module 'react-jss' {
     theming?: Theming;
   }
 
-  export default function injectSheet<P, C extends string>(styles: StaticStyles | ThemedStyles, options?: InjectSheetOptions): ComponentWithStyles<P, C>;
+  export default function injectSheet<P extends object, C extends string>(
+    styles: StaticStyles<C, P> | ThemedStyles<{}, C, P>,
+    options?: InjectSheetOptions,
+  ): ComponentWithStyles<P, C>;
 }
