@@ -8,8 +8,8 @@ declare module 'react-jss' {
 
   export const jss: JSS;
 
-  export interface InjectSheetProps<C extends string> {
-    classes: Record<C, string>;
+  export interface InjectSheetProps<K extends string> {
+    classes: Record<K, string>;
   }
 
   export type ThemeProvider = React.ComponentType<{ theme: object | (() => object) }>;
@@ -47,16 +47,18 @@ declare module 'react-jss' {
     [key: string]: any;
   };
 
-  export type StaticStyles<K extends string = string, P extends object = {}> = Record<K,
+  export type ExtractedClassNames<T> = T extends InjectSheetProps<string> ? keyof T['classes'] : string;
+
+  export type StaticStyles<P extends object = {}, K extends string = ExtractedClassNames<P>> = Record<K,
     ComponentCSSProperties<P> | ((props: P) => ComponentCSSProperties<P>)
   >;
 
-  export type ThemedStyles<T extends object = {}, K extends string = string, P extends object = {}> = (theme: T) => StaticStyles<K, P>;
+  export type ThemedStyles<T extends object = {}, P extends object = {}> = (theme: T) => StaticStyles<P>;
 
-  interface ComponentWithStyles<InjectedProps, C extends string> {
-    <P extends InjectedProps>(
-      component: React.ComponentType<P & InjectSheetProps<C>>
-    ): React.ComponentClass<P & InjectSheetProps<C>>;
+  interface ComponentWithStyles<K extends string> {
+    <P extends InjectSheetProps<K>>(
+      component: React.ComponentType<P & InjectSheetProps<K>>
+    ): React.ComponentClass<P & InjectSheetProps<K>>;
   }
 
   export interface InjectSheetOptions {
@@ -64,8 +66,8 @@ declare module 'react-jss' {
     theming?: Theming;
   }
 
-  export default function injectSheet<P extends object, C extends string>(
-    styles: StaticStyles<C, P> | ThemedStyles<{}, C, P>,
+  export default function injectSheet<P extends object>(
+    styles: StaticStyles<P> | ThemedStyles<{}, P>,
     options?: InjectSheetOptions,
-  ): ComponentWithStyles<P, C>;
+  ): ComponentWithStyles<ExtractedClassNames<P>>;
 }
