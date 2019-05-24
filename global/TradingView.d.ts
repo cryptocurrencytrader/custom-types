@@ -18,7 +18,7 @@ declare namespace TradingViewModule {
   }
 
   interface WidgetProps {
-    charts_storage_api_version: string;
+    charts_storage_api_version?: string;
     charts_storage_url: string;
     client_id: string;
     container_id: string;
