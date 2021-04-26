@@ -1,10 +1,10 @@
 /// <reference types="async"/>
 
-import { AsyncQueue, AsyncResultIterator, AsyncWorker } from 'async';
+import { QueueObject, AsyncResultIterator, AsyncWorker } from 'async';
 
 declare interface Queue {
-  <T, E>(worker: AsyncWorker<T, E>, concurrency?: number): AsyncQueue<T>;
-  <T, R, E>(worker: AsyncResultIterator<T, R, E>, concurrency?: number): AsyncQueue<T>;
+  <T, E>(worker: AsyncWorker<T, E>, concurrency?: number): QueueObject<T>;
+  <T, R, E>(worker: AsyncResultIterator<T, R, E>, concurrency?: number): QueueObject<T>;
 }
 
 declare const queue: Queue;

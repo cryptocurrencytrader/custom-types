@@ -6,9 +6,9 @@
   "author": "Rafael Tavares <rafael@tavares.email>",
   "license": "MIT",
   "dependencies": {
-    "@types/async": "^2.0.48",
-    "@types/react": "^16.3.5",
-    "csstype": "^2.1.1",
-    "type-zoo": "^1.2.1"
+    "@types/async": "^3.2.6",
+    "@types/react": "^17.0.4",
+    "csstype": "^3.0.8",
+    "type-zoo": "^3.4.1"
   }
 }
