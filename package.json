@@ -1,10 +1,10 @@
 {
   "name": "@bitcointrade/custom-types",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "📦 Custom TypeScript definition files for NPM packages",
   "repository": "git@github.com:cryptocurrencytrader/custom-types.git",
   "author": "Rafael Tavares <rafael@tavares.email>",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "dependencies": {
     "@types/async": "^3.2.6",
     "@types/react": "^17.0.4",
